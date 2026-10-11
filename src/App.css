@@ -1,0 +1,138 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, sans-serif;
+  background: #0f1115;
+  color: #e6e6e6;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem;
+}
+
+.header h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.75rem;
+}
+
+.header p {
+  margin: 0 0 1.5rem;
+  color: #9aa0ac;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+}
+
+.field .question {
+  margin: 0 0 0.4rem;
+  font-size: 0.85rem;
+  color: #9aa0ac;
+}
+
+.field select,
+.field textarea {
+  width: 100%;
+  background: #1a1d24;
+  border: 1px solid #2a2e37;
+  border-radius: 8px;
+  color: #e6e6e6;
+  padding: 0.6rem 0.7rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: #5b8cff;
+}
+
+.clear-btn {
+  align-self: flex-start;
+  background: transparent;
+  border: 1px solid #3a3f4a;
+  color: #9aa0ac;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  border-color: #5b8cff;
+  color: #e6e6e6;
+}
+
+.preview {
+  position: sticky;
+  top: 1.5rem;
+  background: #161920;
+  border: 1px solid #2a2e37;
+  border-radius: 12px;
+  padding: 1.2rem;
+}
+
+.preview-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.preview-header h2 {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.preview-header button {
+  background: #5b8cff;
+  border: none;
+  color: white;
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.preview-header button:hover {
+  background: #4a7af0;
+}
+
+.preview-text {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: "SF Mono", Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #d4d8e0;
+  margin: 0;
+  max-height: 70vh;
+  overflow-y: auto;
+}
