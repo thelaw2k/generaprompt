@@ -17,6 +17,10 @@ Elegís el tipo de aplicación, completás lo que sepas de cada sección y copi�
 - [ ] Guardar y reusar prompts/respuestas (localStorage) para no perder lo completado al cerrar la pestaña.
 - [ ] Historial de prompts generados: botón al lado de "Copiar" para guardar el prompt con un nombre, y una lista de los últimos N guardados para volver a uno sin rehacerlo.
 - [ ] Exportar el prompt como archivo `.md` además de copiarlo.
+- [ ] Sugerencias de combinaciones típicas: botones tipo "Stack típico Next.js + Postgres + Tailwind" que precarguen varios campos de una.
+- [ ] Contador de tokens aproximado: mostrar cuánto ocupa el prompt, para no pasarse de contexto.
+- [ ] Sección "preguntas para Claude": un campo donde listar dudas que Claude debe responder antes de arrancar, y se agregan al final del prompt.
+- [ ] Dos checkboxes para solicitar en el prompt la creación de un archivo `README.md` y de un `CLAUDE.md`.
 
 ## Stack
 
