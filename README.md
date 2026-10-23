@@ -14,14 +14,14 @@ Elegís el tipo de aplicación, completás lo que sepas de cada sección y copi�
 ## Roadmap
 
 - [ ] Checklists específicos por tipo de app (web, CLI, móvil, API, script, extensión), con preguntas propias de cada tipo en vez de un único set genérico.
-- [ ] Guardar y reusar prompts/respuestas (localStorage) para no perder lo completado al cerrar la pestaña.
+- [x] Guardar y reusar prompts/respuestas (localStorage) para no perder lo completado al cerrar la pestaña.
 - [ ] Historial de prompts generados: botón al lado de "Copiar" para guardar el prompt con un nombre, y una lista de los últimos N guardados para volver a uno sin rehacerlo.
 - [ ] Exportar el prompt como archivo `.md` además de copiarlo.
 - [ ] Sugerencias de combinaciones típicas: botones tipo "Stack típico Next.js + Postgres + Tailwind" que precarguen varios campos de una.
-- [ ] Contador de tokens aproximado: mostrar cuánto ocupa el prompt, para no pasarse de contexto.
-- [ ] Sección "preguntas para Claude": un campo donde listar dudas que Claude debe responder antes de arrancar, y se agregan al final del prompt.
-- [ ] Dos checkboxes para solicitar en el prompt la creación de un archivo `README.md` y de un `CLAUDE.md`.
+- [x] Contador de tokens aproximado: mostrar cuánto ocupa el prompt, para no pasarse de contexto.
+- [x] Sección "preguntas para Claude": un campo donde listar dudas que Claude debe responder antes de arrancar, y se agregan al final del prompt.
+- [x] Dos checkboxes para solicitar en el prompt la creación de un archivo `README.md` y de un `CLAUDE.md`.
 
 ## Stack
 
-Vite + React + TypeScript, sin backend ni persistencia (por ahora).
+Vite + React + TypeScript, sin backend; el borrador se guarda en localStorage del navegador.

@@ -1,6 +1,8 @@
 import { SECTIONS } from "./sections";
 import { NO_PREFERENCE, OTHER } from "./options";
 
+export const QUESTIONS_ID = "preguntas_claude";
+
 export interface StackChoice {
   value: string;
   otherText: string;
@@ -18,10 +20,16 @@ function resolveChoice(choice: StackChoice): string | null {
   return choice.value;
 }
 
+export interface DocOptions {
+  readme: boolean;
+  claudeMd: boolean;
+}
+
 export function buildPrompt(
   appType: string,
   stack: StackChoices,
-  answers: Record<string, string>
+  answers: Record<string, string>,
+  docs: DocOptions
 ): string {
   const lines: string[] = [];
 
@@ -40,6 +48,20 @@ export function buildPrompt(
     const value = answers[section.id]?.trim();
     if (!value) continue;
     lines.push(`**${section.title}:** ${value}`);
+  }
+
+  if (docs.readme) {
+    lines.push("**Documentación:** Creá un archivo README.md con descripción del proyecto, instrucciones de instalación y uso.");
+  }
+  if (docs.claudeMd) {
+    lines.push("**Documentación:** Creá un archivo CLAUDE.md con las convenciones del proyecto (stack, estructura, estilo de código y restricciones) para guiar futuras sesiones.");
+  }
+
+  const questions = answers[QUESTIONS_ID]?.trim();
+  if (questions) {
+    lines.push("");
+    lines.push("**Preguntas para vos antes de arrancar:**");
+    lines.push(questions);
   }
 
   lines.push("");
