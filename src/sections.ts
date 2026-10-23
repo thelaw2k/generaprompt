@@ -25,9 +25,9 @@ export const SECTIONS: Section[] = [
   },
   {
     id: "stack",
-    title: "Stack técnico",
-    question: "¿Qué lenguaje, framework y base de datos querés usar (si ya tenés preferencia)?",
-    placeholder: "Ej: TypeScript + React en el frontend, Node/Express en el backend, PostgreSQL. Si no tenés preferencia, dejá que decida según el caso.",
+    title: "Otros detalles de stack",
+    question: "¿Algo más sobre el stack técnico? (framework backend, ORM, hosting, etc.)",
+    placeholder: "Ej: backend en Express, ORM Prisma, hosting en Railway. Si ya quedó cubierto arriba, dejalo vacío.",
   },
   {
     id: "features",

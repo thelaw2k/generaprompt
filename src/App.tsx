@@ -1,14 +1,59 @@
 import { useMemo, useState } from "react";
 import { APP_TYPES, SECTIONS } from "./sections";
-import { buildPrompt } from "./buildPrompt";
+import { DB_ENGINES, LANGUAGES, OTHER, UI_LIBRARIES } from "./options";
+import { buildPrompt, type StackChoice } from "./buildPrompt";
 import "./App.css";
+
+const EMPTY_CHOICE: StackChoice = { value: "", otherText: "" };
+
+interface StackSelectProps {
+  id: string;
+  label: string;
+  options: string[];
+  choice: StackChoice;
+  onChange: (choice: StackChoice) => void;
+}
+
+function StackSelect({ id, label, options, choice, onChange }: StackSelectProps) {
+  return (
+    <div className="field">
+      <label htmlFor={id}>{label}</label>
+      <select
+        id={id}
+        value={choice.value || options[0]}
+        onChange={(e) => onChange({ ...choice, value: e.target.value })}
+      >
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+      {choice.value === OTHER && (
+        <input
+          type="text"
+          className="other-input"
+          placeholder="Especificá cuál"
+          value={choice.otherText}
+          onChange={(e) => onChange({ ...choice, otherText: e.target.value })}
+        />
+      )}
+    </div>
+  );
+}
 
 function App() {
   const [appType, setAppType] = useState<string>(APP_TYPES[0]);
+  const [language, setLanguage] = useState<StackChoice>(EMPTY_CHOICE);
+  const [dbEngine, setDbEngine] = useState<StackChoice>(EMPTY_CHOICE);
+  const [uiLibrary, setUiLibrary] = useState<StackChoice>(EMPTY_CHOICE);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [copied, setCopied] = useState(false);
 
-  const prompt = useMemo(() => buildPrompt(appType, answers), [appType, answers]);
+  const prompt = useMemo(
+    () => buildPrompt(appType, { language, dbEngine, uiLibrary }, answers),
+    [appType, language, dbEngine, uiLibrary, answers]
+  );
 
   function updateAnswer(id: string, value: string) {
     setAnswers((prev) => ({ ...prev, [id]: value }));
@@ -27,6 +72,9 @@ function App() {
 
   function clearAll() {
     setAnswers({});
+    setLanguage(EMPTY_CHOICE);
+    setDbEngine(EMPTY_CHOICE);
+    setUiLibrary(EMPTY_CHOICE);
     setCopied(false);
   }
 
@@ -53,6 +101,28 @@ function App() {
               ))}
             </select>
           </div>
+
+          <StackSelect
+            id="language"
+            label="Lenguaje de programación"
+            options={LANGUAGES}
+            choice={language}
+            onChange={setLanguage}
+          />
+          <StackSelect
+            id="db-engine"
+            label="Motor de base de datos"
+            options={DB_ENGINES}
+            choice={dbEngine}
+            onChange={setDbEngine}
+          />
+          <StackSelect
+            id="ui-library"
+            label="Librería de UI/UX"
+            options={UI_LIBRARIES}
+            choice={uiLibrary}
+            onChange={setUiLibrary}
+          />
 
           {SECTIONS.map((section) => (
             <div className="field" key={section.id}>
