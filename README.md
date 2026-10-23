@@ -15,6 +15,8 @@ Elegís el tipo de aplicación, completás lo que sepas de cada sección y copi�
 
 - [ ] Checklists específicos por tipo de app (web, CLI, móvil, API, script, extensión), con preguntas propias de cada tipo en vez de un único set genérico.
 - [ ] Guardar y reusar prompts/respuestas (localStorage) para no perder lo completado al cerrar la pestaña.
+- [ ] Historial de prompts generados: botón al lado de "Copiar" para guardar el prompt con un nombre, y una lista de los últimos N guardados para volver a uno sin rehacerlo.
+- [ ] Exportar el prompt como archivo `.md` además de copiarlo.
 
 ## Stack
 
